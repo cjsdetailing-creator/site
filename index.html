@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CJ's Auto Detailing | Turlock, CA</title>
+<title>CJ's Detailing Shop | Turlock, CA</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -27,6 +27,7 @@ header{
   background:#111;
 }
 
+/* HERO */
 .hero{
   height:90vh;
   display:flex;
@@ -40,15 +41,16 @@ header{
 }
 
 .hero h2{
-  font-size:48px;
+  font-size:42px;
 }
 
+/* BUTTON */
 .btn{
   background:#00c2ff;
   padding:12px 24px;
   border:none;
   border-radius:8px;
-  margin-top:10px;
+  margin-top:15px;
   cursor:pointer;
   color:#000;
   font-weight:600;
@@ -67,14 +69,71 @@ header{
   border-radius:10px;
 }
 
-/* ===== SERVICE GRID ===== */
+/* ===== HERO TEXT EFFECTS ===== */
+
+.gradient-text {
+  background: linear-gradient(90deg, #00c2ff, #4f46e5, #00c2ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s linear infinite, glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0,194,255,0.2);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0,194,255,0.4);
+  }
+}
+
+/* Headline transitions (NO blur) */
+#headline {
+  display:inline-block;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Subtitle + button animation */
+.hero-subtitle,
+.hero-btn {
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp 0.8s ease forwards;
+}
+
+.hero-subtitle{animation-delay:0.6s;}
+.hero-btn{animation-delay:0.9s;}
+
+@keyframes fadeUp {
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===== SERVICES ===== */
 .services{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
 
-/* ===== SERVICE CARD ===== */
 .service-card{
   background:#111;
   padding:20px;
@@ -83,19 +142,16 @@ header{
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.08);
 
-  /* Animation start state */
   opacity:0;
   transform:translateY(30px);
   transition:all 0.6s ease;
 }
 
-/* Visible state */
 .service-card.visible{
   opacity:1;
   transform:translateY(0);
 }
 
-/* Gradient outline */
 .service-card::before{
   content:"";
   position:absolute;
@@ -112,26 +168,21 @@ header{
   opacity:0.6;
 }
 
-/* Hover */
 .service-card:hover{
   transform:translateY(-6px);
   box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* Titles */
 .service-card h4{
   margin-bottom:10px;
-  font-size:18px;
 }
 
-/* Description */
 .service-card p{
   font-size:14px;
-  line-height:1.5;
   color:#ccc;
+  line-height:1.5;
 }
 
-/* Badge */
 .badge{
   display:inline-block;
   font-size:12px;
@@ -143,19 +194,7 @@ header{
   margin-bottom:10px;
 }
 
-/* Stagger delay */
-.service-card:nth-child(1){ transition-delay:0.05s; }
-.service-card:nth-child(2){ transition-delay:0.1s; }
-.service-card:nth-child(3){ transition-delay:0.15s; }
-.service-card:nth-child(4){ transition-delay:0.2s; }
-.service-card:nth-child(5){ transition-delay:0.25s; }
-.service-card:nth-child(6){ transition-delay:0.3s; }
-.service-card:nth-child(7){ transition-delay:0.35s; }
-.service-card:nth-child(8){ transition-delay:0.4s; }
-.service-card:nth-child(9){ transition-delay:0.45s; }
-.service-card:nth-child(10){ transition-delay:0.5s; }
-
-/* Form */
+/* FORM */
 .card{
   background:#111;
   padding:20px;
@@ -177,65 +216,22 @@ footer{
   padding:20px;
   color:#777;
 }
-  /* ===== GRADIENT TEXT ===== */
-.gradient-text {
-  background: linear-gradient(90deg, #00c2ff, #4f46e5, #00c2ff);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientMove 4s linear infinite;
-}
-
-/* Gradient animation */
-@keyframes gradientMove {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
-
-/* ===== TYPEWRITER CURSOR ===== */
-.typewriter::after {
-  content: "|";
-  animation: blink 0.8s infinite;
-  margin-left: 4px;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-/* Keep your existing hero animation styles if you added them earlier */
-.hero-subtitle,
-.hero-btn {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease forwards;
-}
-
-.hero-subtitle { animation-delay: 0.6s; }
-.hero-btn { animation-delay: 0.9s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>CJ's Auto Detailing</h1>
+<h1>CJ's Detailing Shop</h1>
 </header>
 
 <section class="hero">
-  <h2 class="hero-title">
-    <span class="gradient-text typewriter" id="typewriter"></span>
-  </h2>
-  <p class="hero-subtitle">Turlock, CA • Drop-Off Only</p>
-  <button class="btn hero-btn" onclick="scrollToBooking()">Get Quote</button>
+<h2 class="gradient-text glow-pulse">
+  <span id="headline"></span>
+</h2>
+
+<p class="hero-subtitle">Turlock, CA • Drop-Off Only</p>
+<button class="btn hero-btn" onclick="scrollToBooking()">Get Quote</button>
 </section>
 
 <section class="section">
@@ -245,53 +241,54 @@ footer{
 
 <div class="service-card">
 <h4>Basic Interior - $65</h4>
-<p>Quick plastic wipe down and simple carpet vacuum. Best for well-kept or newer vehicles needing light maintenance cleaning.</p>
+<p>Quick wipe down and vacuum. Best for lightly used or newer vehicles.</p>
 </div>
 
 <div class="service-card">
 <div class="badge">Most Popular</div>
 <h4>Deluxe Interior - $110</h4>
-<p>Thorough interior cleaning including plastics, windows, crevices, air blowout, and full vacuum to remove hidden dust and debris.</p>
+<p>Deep cleaning with air blowout, full vacuum, plastics cleaned, and crevices detailed.</p>
 </div>
 
 <div class="service-card">
 <h4>Platinum Interior - $220</h4>
-<p>Deep interior reset with air blowout, steam cleaning, and full vacuum. Removes embedded dirt and provides sanitization.</p>
+<p>Full interior reset with steam cleaning, deep vacuum, and sanitization.</p>
 </div>
 
 <div class="service-card">
 <h4>Standard Wash - $55</h4>
-<p>Wheel and tire cleaning, bug removal, and a full foam hand wash for a safe exterior clean.</p>
+<p>Foam hand wash with wheel and tire cleaning and bug removal.</p>
 </div>
 
 <div class="service-card">
 <h4>Wash & Wax - $80</h4>
-<p>Full hand wash with wheel cleaning, bug removal, and a protective wax coating for added gloss and hydrophobic protection.</p>
+<p>Full wash plus protective wax for added gloss and hydrophobic protection.</p>
 </div>
 
 <div class="service-card">
 <h4>Clay & Seal - $125</h4>
-<p>Decontamination wash with iron removal, clay bar treatment, and sealant application for smooth paint and protection.</p>
+<p>Decontamination wash with clay bar and sealant for smooth protected paint.</p>
 </div>
 
 <div class="service-card">
 <h4>1-Step Paint Correction - $299+</h4>
-<p>Machine polishing to remove light swirl marks, oxidation, and minor defects while enhancing gloss and clarity.</p>
+<p>Removes light swirl marks and improves gloss and clarity.</p>
 </div>
 
 <div class="service-card">
 <h4>2-Step Paint Correction - $399+</h4>
-<p>Multi-stage correction process that removes deeper defects and refines the finish for maximum depth and shine.</p>
+<p>Multi-stage correction for deeper scratches and maximum finish refinement.</p>
 </div>
 
 <div class="service-card">
 <h4>Full Basic Package - $110</h4>
-<p>Basic interior + standard exterior wash. Ideal for maintaining a clean vehicle inside and out.</p>
+<p>Basic interior + exterior wash for a quick full refresh.</p>
 </div>
 
 <div class="service-card">
+<div class="badge">Great Value</div>
 <h4>Full Deluxe Package - $180</h4>
-<p>Deluxe interior + wash & wax exterior. A complete inside and outside refresh with added protection.</p>
+<p>Deluxe interior + wash & wax for complete interior and exterior care.</p>
 </div>
 
 </div>
@@ -337,7 +334,6 @@ footer{
 
 <input id="name" placeholder="Your Name">
 <input id="phone" placeholder="Phone Number">
-<input id="photos" type="file" multiple>
 
 <h3>Total: $<span id="total">80</span></h3>
 
@@ -353,53 +349,73 @@ footer{
 <script>
 const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyhkLtBRhPG-jGrpLoDfRgZkTLJI0vKTP0W-uDX4YVRjijv2fNc3X8vQdUXNA1KWPnu/exec";
 
-function scrollToBooking(){
-document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-}
+/* ===== HEADLINE ROTATION (NO ICONS, NO BLUR) ===== */
+const phrases = [
+  "Premium Auto Detailing",
+  "Interior Detailing",
+  "Exterior Detailing",
+  "Paint Correction"
+];
 
-function updateTotal(){
-let s=document.getElementById('service').value.split('|')[1];
-let z=document.getElementById('size').value.split('|')[1];
-let a=document.getElementById('addon').value.split('|')[1];
-document.getElementById('total').innerText=+s + +z + +a;
-}
+const headlineEl = document.getElementById("headline");
 
-document.querySelectorAll('select').forEach(e=>e.addEventListener('change',updateTotal));
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-function updateSpots(){
-let n=Math.floor(Math.random()*3)+1;
-document.getElementById('spots').innerText=`⚠️ Only ${n} spots left this week`;
-}
-updateSpots();
-
-async function bookNow(){
-let data={
-name:document.getElementById('name').value,
-phone:document.getElementById('phone').value,
-service:document.getElementById('service').value,
-size:document.getElementById('size').value,
-addon:document.getElementById('addon').value,
-total:document.getElementById('total').innerText
-};
-
-if(!data.name || !data.phone){
-alert('Fill all fields');
-return;
-}
-
-fetch(WEBHOOK_URL,{
-method:'POST',
-body:JSON.stringify(data)
+window.addEventListener("load", () => {
+  rotateLoop();
 });
 
-let msg=`New Booking - ${data.name}, ${data.phone}, ${data.service}, Total $${data.total}`;
-window.location.href=`sms:+12097671933?body=${msg}`;
+function rotateLoop(){
+  const current = phrases[phraseIndex];
+
+  if(!isDeleting){
+    headlineEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+
+    if(charIndex === current.length){
+      isDeleting = true;
+
+      setTimeout(()=>{
+        headlineEl.classList.add("fade-out");
+
+        setTimeout(()=>{
+          rotateLoop();
+        },400);
+
+      },1200);
+
+      return;
+    }
+
+  } else {
+    headlineEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+
+    if(charIndex === 0){
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+
+      headlineEl.classList.remove("fade-out");
+      headlineEl.classList.add("fade-in");
+
+      setTimeout(()=>{
+        headlineEl.classList.remove("fade-in");
+        rotateLoop();
+      },300);
+
+      return;
+    }
+  }
+
+  setTimeout(rotateLoop, isDeleting ? 40 : 70);
 }
 
 /* ===== SCROLL ANIMATION ===== */
 const cards = document.querySelectorAll('.service-card');
 
-const observer = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
@@ -407,23 +423,51 @@ const observer = new IntersectionObserver((entries)=>{
   });
 },{threshold:0.2});
 
-cards.forEach(card=>{
-  observer.observe(card);
-});
+cards.forEach(card=>observer.observe(card));
 
-  const text = "Premium Auto Detailing";
-const speed = 80;
-let i = 0;
-
-function typeWriter() {
-  if (i < text.length) {
-    document.getElementById("typewriter").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
+/* ===== UTIL ===== */
+function scrollToBooking(){
+  document.getElementById('booking').scrollIntoView({behavior:'smooth'});
 }
 
-window.addEventListener("load", typeWriter);
+function updateTotal(){
+  let s=document.getElementById('service').value.split('|')[1];
+  let z=document.getElementById('size').value.split('|')[1];
+  let a=document.getElementById('addon').value.split('|')[1];
+  document.getElementById('total').innerText=+s + +z + +a;
+}
+
+document.querySelectorAll('select').forEach(e=>e.addEventListener('change',updateTotal));
+
+function updateSpots(){
+  let n=Math.floor(Math.random()*3)+1;
+  document.getElementById('spots').innerText=`⚠️ Only ${n} spots left this week`;
+}
+updateSpots();
+
+async function bookNow(){
+  let data={
+    name:document.getElementById('name').value,
+    phone:document.getElementById('phone').value,
+    service:document.getElementById('service').value,
+    size:document.getElementById('size').value,
+    addon:document.getElementById('addon').value,
+    total:document.getElementById('total').innerText
+  };
+
+  if(!data.name || !data.phone){
+    alert('Fill all fields');
+    return;
+  }
+
+  fetch(WEBHOOK_URL,{
+    method:'POST',
+    body:JSON.stringify(data)
+  });
+
+  let msg=`New Booking - ${data.name}, ${data.phone}, ${data.service}, Total $${data.total}`;
+  window.location.href=`sms:+12097671933?body=${msg}`;
+}
 </script>
 
 </body>
