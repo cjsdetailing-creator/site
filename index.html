@@ -177,6 +177,50 @@ footer{
   padding:20px;
   color:#777;
 }
+  /* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(90deg, #00c2ff, #4f46e5, #00c2ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 4s linear infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ===== TYPEWRITER CURSOR ===== */
+.typewriter::after {
+  content: "|";
+  animation: blink 0.8s infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* Keep your existing hero animation styles if you added them earlier */
+.hero-subtitle,
+.hero-btn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.hero-subtitle { animation-delay: 0.6s; }
+.hero-btn { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
 </head>
 
@@ -187,9 +231,11 @@ footer{
 </header>
 
 <section class="hero">
-<h2>Premium Auto Detailing</h2>
-<p>Turlock, CA • Drop-Off Only</p>
-<button class="btn" onclick="scrollToBooking()">Get Quote</button>
+  <h2 class="hero-title">
+    <span class="gradient-text typewriter" id="typewriter"></span>
+  </h2>
+  <p class="hero-subtitle">Turlock, CA • Drop-Off Only</p>
+  <button class="btn hero-btn" onclick="scrollToBooking()">Get Quote</button>
 </section>
 
 <section class="section">
@@ -364,6 +410,20 @@ const observer = new IntersectionObserver((entries)=>{
 cards.forEach(card=>{
   observer.observe(card);
 });
+
+  const text = "Premium Auto Detailing";
+const speed = 80;
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+window.addEventListener("load", typeWriter);
 </script>
 
 </body>
