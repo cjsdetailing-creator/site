@@ -17,7 +17,29 @@ header{display:flex;justify-content:space-between;padding:20px;background:#111}
 .card{background:#111;padding:20px;border-radius:12px}
 input,select{width:100%;padding:10px;margin-top:10px;background:#000;border:1px solid #222;color:#fff;border-radius:6px}
 .notice{text-align:center;background:#111;padding:15px;border-radius:10px}
-footer{text-align:center;padding:20px;color:#777}
+footer{text-align:center;padding:20px;color:#777
+      .badge{
+position:absolute;
+top:10px;
+right:10px;
+background:#00c2ff;
+color:#000;
+padding:5px 10px;
+font-size:12px;
+font-weight:700;
+border-radius:20px;
+}
+.card{position:relative;}
+  .popular{
+box-shadow: 0 0 20px rgba(0, 194, 255, 0.25);
+border: 1px solid rgba(0, 194, 255, 0.35);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.popular:hover{
+transform: translateY(-3px);
+box-shadow: 0 0 30px rgba(0, 194, 255, 0.4);
+}
 </style>
 </head>
 
@@ -30,6 +52,63 @@ footer{text-align:center;padding:20px;color:#777}
 <h2>Premium Auto Detailing</h2>
 <p>Turlock, CA • Drop-Off Only</p>
 <button class="btn" onclick="scrollToBooking()">Get Quote</button>
+</section>
+  <section class="section">
+<h3 style="text-align:center;margin-bottom:30px;">Our Services</h3>
+
+<div style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
+
+<div class="card">
+<h4>Basic Interior - $65</h4>
+<p>This service includes a quick plastic wipe down as well as a simple carpet vacuum. This package is best suited for brand new or well kept cars.</p>
+</div>
+
+<div class="card">
+<div class="badge">Most Popular</div>
+<h4>Deluxe Interior - $110</h4>
+<p>This service includes a more thorough cleaning of all plastics, windows and other small crevices. This is followed with an air blowout and full interior vacuum to remove hidden dust and debris.</p>
+</div>
+
+<div class="card">
+<h4>Platinum Interior - $220</h4>
+<p>This service includes a complete deep cleaning of the vehicle’s interior. It features an air blowout, steam cleaning, and full vacuum to remove embedded dirt from carpets and seats. The steam process also provides a deep sanitization treatment.</p>
+</div>
+
+<div class="card">
+<h4>Standard Wash - $55</h4>
+<p>This package includes a deep wheel and tire cleaning, bug removal, and a full foam hand wash to safely clean the vehicle’s exterior.</p>
+</div>
+
+<div class="card">
+<h4>Wash & Wax - $80</h4>
+<p>This package includes a deep wheel and tire cleaning, bug removal, full body hand wash, and a 2-month protective wax that enhances gloss and adds hydrophobic protection.</p>
+</div>
+
+<div class="card">
+<h4>Clay & Seal - $125</h4>
+<p>This package includes a deep wheel and tire cleaning, iron decontamination, bug removal, clay bar treatment, and a full foam hand wash. A 3-month sealant is applied for protection. The clay process removes embedded contaminants and restores smoothness and shine.</p>
+</div>
+
+<div class="card">
+<h4>1-Step Paint Correction - $299+</h4>
+<p>This service includes a machine polish designed to remove light swirl marks, oxidation, and minor imperfections in the paint. It enhances gloss, clarity, and depth while significantly improving the overall appearance of the vehicle.</p>
+</div>
+
+<div class="card">
+<h4>2-Step Paint Correction - $399+</h4>
+<p>This service includes a multi-stage machine polishing process to remove deeper scratches, swirl marks, and heavier paint defects. The first step corrects imperfections, while the second step refines the finish to restore maximum gloss, depth, and clarity.</p>
+</div>
+  <div class="card">
+<h4>Full Basic Package - $110</h4>
+<p>This package includes a Basic Interior clean along with a Standard Exterior wash. It features a quick interior wipe down and vacuum paired with a foam hand wash, wheel and tire cleaning, and bug removal. Ideal for maintaining a clean vehicle inside and out.</p>
+</div>
+
+<div class="card">
+<h4>Full Deluxe Package - $180</h4>
+<p>This package includes a Deluxe Interior detail combined with a Wash & Wax exterior service. It provides a deeper interior cleaning with air blowout and full vacuum, along with a thorough exterior wash and a protective wax coating for added gloss and hydrophobic protection.</p>
+</div>
+
+</div>
 </section>
 
 <section class="section">
@@ -49,6 +128,8 @@ footer{text-align:center;padding:20px;color:#777}
   <option value="Exterior Reset|125">Exterior Clay+Seal</option>
 <option value="1-Step Correction|349">1-Step Correction</option>
   <option value="2-Step Correction|449">2-Step Correction</option>
+  <option value="Full Basic Package|110">Full Basic Package (Basic In + Basic Out)</option>
+<option value="Full Deluxe Package|180">Full Deluxe Package (Deluxe In + Wash & Wax)</option>
 </select>
 
 <select id="size">
