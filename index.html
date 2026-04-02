@@ -465,7 +465,7 @@ async function bookNow(){
     body:JSON.stringify(data)
   });
 
-  let msg=`New Booking - ${data.name}, ${data.phone}, ${data.service}, Total $${data.total}`;
+  let msg=`New Booking -  ${data.name}, ${data.phone}, ${data.service}, ${data.size}, ${data.addon}, Total $${data.total}`;
   window.location.href=`sms:+12097671933?body=${msg}`;
 }
 </script>
