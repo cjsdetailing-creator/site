@@ -4,28 +4,184 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CJ's Auto Detailing | Turlock, CA</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0b0b0b;color:#fff}
-header{display:flex;justify-content:space-between;padding:20px;background:#111}
-.hero{height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('https://raw.githubusercontent.com/cjsdetailing-creator/site/refs/heads/main/IMG_2324.jpeg');background-size:cover}
-.hero h2{font-size:48px}
-.btn{background:#00c2ff;padding:12px 24px;border:none;border-radius:8px;margin-top:10px;cursor:pointer}
-.section{padding:60px 20px;max-width:1000px;margin:auto}
-.card{background:#111;padding:20px;border-radius:12px}
-input,select{width:100%;padding:10px;margin-top:10px;background:#000;border:1px solid #222;color:#fff;border-radius:6px}
-.notice{text-align:center;background:#111;padding:15px;border-radius:10px}
-footer{text-align:center;padding:20px;color:#777
-.badge{position:absolute;top:10px;right:10px;background:#00c2ff;color:#000;padding:5px 10px;font-size:12px;font-weight:700;border-radius:20px;}
-.card{position:relative;}
-.popular{box-shadow: 0 0 20px rgba(0, 194, 255, 0.25);border: 1px solid rgba(0, 194, 255, 0.35);transition: transform 0.2s ease, box-shadow 0.2s ease;}
-.popular:hover{transform: translateY(-3px);box-shadow: 0 0 30px rgba(0, 194, 255, 0.4);}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background:#0b0b0b;
+  color:#fff;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:#111;
+}
+
+.hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+  url('https://raw.githubusercontent.com/cjsdetailing-creator/site/refs/heads/main/IMG_2324.jpeg');
+  background-size:cover;
+}
+
+.hero h2{
+  font-size:48px;
+}
+
+.btn{
+  background:#00c2ff;
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+  cursor:pointer;
+  color:#000;
+  font-weight:600;
+}
+
+.section{
+  padding:60px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.notice{
+  text-align:center;
+  background:#111;
+  padding:15px;
+  border-radius:10px;
+}
+
+/* ===== SERVICE GRID ===== */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* ===== SERVICE CARD ===== */
+.service-card{
+  background:#111;
+  padding:20px;
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+
+  /* Animation start state */
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s ease;
+}
+
+/* Visible state */
+.service-card.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Gradient outline */
+.service-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  padding:1px;
+  background:linear-gradient(135deg,#00c2ff,#4f46e5);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  opacity:0.6;
+}
+
+/* Hover */
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Titles */
+.service-card h4{
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+/* Description */
+.service-card p{
+  font-size:14px;
+  line-height:1.5;
+  color:#ccc;
+}
+
+/* Badge */
+.badge{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#00c2ff;
+  color:#000;
+  margin-bottom:10px;
+}
+
+/* Stagger delay */
+.service-card:nth-child(1){ transition-delay:0.05s; }
+.service-card:nth-child(2){ transition-delay:0.1s; }
+.service-card:nth-child(3){ transition-delay:0.15s; }
+.service-card:nth-child(4){ transition-delay:0.2s; }
+.service-card:nth-child(5){ transition-delay:0.25s; }
+.service-card:nth-child(6){ transition-delay:0.3s; }
+.service-card:nth-child(7){ transition-delay:0.35s; }
+.service-card:nth-child(8){ transition-delay:0.4s; }
+.service-card:nth-child(9){ transition-delay:0.45s; }
+.service-card:nth-child(10){ transition-delay:0.5s; }
+
+/* Form */
+.card{
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+}
+
+input,select{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  background:#000;
+  border:1px solid #222;
+  color:#fff;
+  border-radius:6px;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:#777;
+}
 </style>
 </head>
 
 <body>
+
 <header>
 <h1>CJ's Auto Detailing</h1>
 </header>
@@ -35,59 +191,61 @@ footer{text-align:center;padding:20px;color:#777
 <p>Turlock, CA • Drop-Off Only</p>
 <button class="btn" onclick="scrollToBooking()">Get Quote</button>
 </section>
-  <section class="section">
+
+<section class="section">
 <h3 style="text-align:center;margin-bottom:30px;">Our Services</h3>
 
-<div style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));">
+<div class="services">
 
-<div class="card">
+<div class="service-card">
 <h4>Basic Interior - $65</h4>
-<p>This service includes a quick plastic wipe down as well as a simple carpet vacuum. This package is best suited for brand new or well kept cars.</p>
+<p>Quick plastic wipe down and simple carpet vacuum. Best for well-kept or newer vehicles needing light maintenance cleaning.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <div class="badge">Most Popular</div>
 <h4>Deluxe Interior - $110</h4>
-<p>This service includes a more thorough cleaning of all plastics, windows and other small crevices. This is followed with an air blowout and full interior vacuum to remove hidden dust and debris.</p>
+<p>Thorough interior cleaning including plastics, windows, crevices, air blowout, and full vacuum to remove hidden dust and debris.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>Platinum Interior - $220</h4>
-<p>This service includes a complete deep cleaning of the vehicle’s interior. It features an air blowout, steam cleaning, and full vacuum to remove embedded dirt from carpets and seats. The steam process also provides a deep sanitization treatment.</p>
+<p>Deep interior reset with air blowout, steam cleaning, and full vacuum. Removes embedded dirt and provides sanitization.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>Standard Wash - $55</h4>
-<p>This package includes a deep wheel and tire cleaning, bug removal, and a full foam hand wash to safely clean the vehicle’s exterior.</p>
+<p>Wheel and tire cleaning, bug removal, and a full foam hand wash for a safe exterior clean.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>Wash & Wax - $80</h4>
-<p>This package includes a deep wheel and tire cleaning, bug removal, full body hand wash, and a 2-month protective wax that enhances gloss and adds hydrophobic protection.</p>
+<p>Full hand wash with wheel cleaning, bug removal, and a protective wax coating for added gloss and hydrophobic protection.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>Clay & Seal - $125</h4>
-<p>This package includes a deep wheel and tire cleaning, iron decontamination, bug removal, clay bar treatment, and a full foam hand wash. A 3-month sealant is applied for protection. The clay process removes embedded contaminants and restores smoothness and shine.</p>
+<p>Decontamination wash with iron removal, clay bar treatment, and sealant application for smooth paint and protection.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>1-Step Paint Correction - $299+</h4>
-<p>This service includes a machine polish designed to remove light swirl marks, oxidation, and minor imperfections in the paint. It enhances gloss, clarity, and depth while significantly improving the overall appearance of the vehicle.</p>
+<p>Machine polishing to remove light swirl marks, oxidation, and minor defects while enhancing gloss and clarity.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
 <h4>2-Step Paint Correction - $399+</h4>
-<p>This service includes a multi-stage machine polishing process to remove deeper scratches, swirl marks, and heavier paint defects. The first step corrects imperfections, while the second step refines the finish to restore maximum gloss, depth, and clarity.</p>
-</div>
-  <div class="card">
-<h4>Full Basic Package - $110</h4>
-<p>This package includes a Basic Interior clean along with a Standard Exterior wash. It features a quick interior wipe down and vacuum paired with a foam hand wash, wheel and tire cleaning, and bug removal. Ideal for maintaining a clean vehicle inside and out.</p>
+<p>Multi-stage correction process that removes deeper defects and refines the finish for maximum depth and shine.</p>
 </div>
 
-<div class="card">
+<div class="service-card">
+<h4>Full Basic Package - $110</h4>
+<p>Basic interior + standard exterior wash. Ideal for maintaining a clean vehicle inside and out.</p>
+</div>
+
+<div class="service-card">
 <h4>Full Deluxe Package - $180</h4>
-<p>This package includes a Deluxe Interior detail combined with a Wash & Wax exterior service. It provides a deeper interior cleaning with air blowout and full vacuum, along with a thorough exterior wash and a protective wax coating for added gloss and hydrophobic protection.</p>
+<p>Deluxe interior + wash & wax exterior. A complete inside and outside refresh with added protection.</p>
 </div>
 
 </div>
@@ -99,19 +257,20 @@ footer{text-align:center;padding:20px;color:#777
 
 <section id="booking" class="section">
 <h3>Instant Quote & Booking</h3>
+
 <div class="card">
 
 <select id="service">
 <option value="Basic Interior|70">Basic Interior</option>
 <option value="Deep Interior|110">Deep Interior</option>
-  <option value="Interior Reset|220">Interior Reset</option>
-  <option value="Basic Exterior|55">Standard Exterior</option>
+<option value="Interior Reset|220">Interior Reset</option>
+<option value="Basic Exterior|55">Standard Exterior</option>
 <option value="Deep Exterior|80">Exterior Wash & Wax</option>
-  <option value="Exterior Reset|125">Exterior Clay+Seal</option>
+<option value="Exterior Reset|125">Exterior Clay+Seal</option>
 <option value="1-Step Correction|349">1-Step Correction</option>
-  <option value="2-Step Correction|449">2-Step Correction</option>
-  <option value="Full Basic Package|110">Full Basic Package (Basic In + Basic Out)</option>
-<option value="Full Deluxe Package|180">Full Deluxe Package (Deluxe In + Wash & Wax)</option>
+<option value="2-Step Correction|449">2-Step Correction</option>
+<option value="Full Basic Package|110">Full Basic Package</option>
+<option value="Full Deluxe Package|180">Full Deluxe Package</option>
 </select>
 
 <select id="size">
@@ -146,16 +305,19 @@ footer{text-align:center;padding:20px;color:#777
 </footer>
 
 <script>
-const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyhkLtBRhPG-jGrpLoDfRgZkTLJI0vKTP0W-uDX4YVRjijv2fNc3X8vQdUXNA1KWPnu/exec"; // replace
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyhkLtBRhPG-jGrpLoDfRgZkTLJI0vKTP0W-uDX4YVRjijv2fNc3X8vQdUXNA1KWPnu/exec";
 
-function scrollToBooking(){document.getElementById('booking').scrollIntoView({behavior:'smooth'});}
+function scrollToBooking(){
+document.getElementById('booking').scrollIntoView({behavior:'smooth'});
+}
 
 function updateTotal(){
 let s=document.getElementById('service').value.split('|')[1];
 let z=document.getElementById('size').value.split('|')[1];
 let a=document.getElementById('addon').value.split('|')[1];
-document.getElementById('total').innerText=+s+ +z+ +a;
+document.getElementById('total').innerText=+s + +z + +a;
 }
+
 document.querySelectorAll('select').forEach(e=>e.addEventListener('change',updateTotal));
 
 function updateSpots(){
@@ -174,20 +336,34 @@ addon:document.getElementById('addon').value,
 total:document.getElementById('total').innerText
 };
 
-if(!data.name || !data.phone){alert('Fill all fields');return;}
+if(!data.name || !data.phone){
+alert('Fill all fields');
+return;
+}
 
-// send to google sheets
-fetch(WEBHOOK_URL,{method:'POST',body:JSON.stringify(data)});
+fetch(WEBHOOK_URL,{
+method:'POST',
+body:JSON.stringify(data)
+});
 
-// open sms
 let msg=`New Booking - ${data.name}, ${data.phone}, ${data.service}, Total $${data.total}`;
 window.location.href=`sms:+12097671933?body=${msg}`;
-
-// follow-up system
-setTimeout(()=>{
-alert('If no reply in 10 mins, send another text 👍');
-},5000);
 }
+
+/* ===== SCROLL ANIMATION ===== */
+const cards = document.querySelectorAll('.service-card');
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
+
+cards.forEach(card=>{
+  observer.observe(card);
+});
 </script>
 
 </body>
