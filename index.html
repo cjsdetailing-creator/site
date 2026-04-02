@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJ's Auto Detailing | Turlock, CA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{background:#0b0b0b;color:#fff}
+header{display:flex;justify-content:space-between;padding:20px;background:#111}
+.hero{height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=1600');background-size:cover}
+.hero h2{font-size:48px}
+.btn{background:#00c2ff;padding:12px 24px;border:none;border-radius:8px;margin-top:10px;cursor:pointer}
+.section{padding:60px 20px;max-width:1000px;margin:auto}
+.card{background:#111;padding:20px;border-radius:12px}
+input,select{width:100%;padding:10px;margin-top:10px;background:#000;border:1px solid #222;color:#fff;border-radius:6px}
+.notice{text-align:center;background:#111;padding:15px;border-radius:10px}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+
+<body>
+<header>
+<h1>CJ's Auto Detailing</h1>
+</header>
+
+<section class="hero">
+<h2>Premium Auto Detailing</h2>
+<p>Turlock, CA • Drop-Off Only</p>
+<button class="btn" onclick="scrollToBooking()">Get Quote</button>
+</section>
+
+<section class="section">
+<div id="spots" class="notice"></div>
+</section>
+
+<section id="booking" class="section">
+<h3>Instant Quote & Booking</h3>
+<div class="card">
+
+<select id="service">
+<option value="Basic Interior|80">Basic Interior</option>
+<option value="Deep Interior|150">Deep Interior</option>
+<option value="2-Step Correction|500">2-Step Correction</option>
+</select>
+
+<select id="size">
+<option value="Sedan|0">Sedan</option>
+<option value="SUV|20">SUV/Truck</option>
+</select>
+
+<select id="addon">
+<option value="None|0">No Add-on</option>
+<option value="Engine Bay|30">Engine Bay</option>
+<option value="Headlights|50">Headlights</option>
+</select>
+
+<select id="day">
+<option>Weekday</option>
+<option>Weekend</option>
+</select>
+
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<input id="photos" type="file" multiple>
+
+<h3>Total: $<span id="total">80</span></h3>
+
+<button class="btn" onclick="bookNow()">Book Now</button>
+
+</div>
+</section>
+
+<footer>
+<p>© 2026 CJ's Auto Detailing</p>
+</footer>
+
+<script>
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyhkLtBRhPG-jGrpLoDfRgZkTLJI0vKTP0W-uDX4YVRjijv2fNc3X8vQdUXNA1KWPnu/exec"; // replace
+
+function scrollToBooking(){document.getElementById('booking').scrollIntoView({behavior:'smooth'});}
+
+function updateTotal(){
+let s=document.getElementById('service').value.split('|')[1];
+let z=document.getElementById('size').value.split('|')[1];
+let a=document.getElementById('addon').value.split('|')[1];
+document.getElementById('total').innerText=+s+ +z+ +a;
+}
+document.querySelectorAll('select').forEach(e=>e.addEventListener('change',updateTotal));
+
+function updateSpots(){
+let n=Math.floor(Math.random()*3)+1;
+document.getElementById('spots').innerText=`⚠️ Only ${n} spots left this week`;
+}
+updateSpots();
+
+async function bookNow(){
+let data={
+name:document.getElementById('name').value,
+phone:document.getElementById('phone').value,
+service:document.getElementById('service').value,
+size:document.getElementById('size').value,
+addon:document.getElementById('addon').value,
+total:document.getElementById('total').innerText
+};
+
+if(!data.name || !data.phone){alert('Fill all fields');return;}
+
+// send to google sheets
+fetch(WEBHOOK_URL,{method:'POST',body:JSON.stringify(data)});
+
+// open sms
+let msg=`New Booking - ${data.name}, ${data.phone}, ${data.service}, Total $${data.total}`;
+window.location.href=`sms:+12090000000?body=${msg}`;
+
+// follow-up system
+setTimeout(()=>{
+alert('If no reply in 10 mins, send another text 👍');
+},5000);
+}
+</script>
+
+</body>
+</html>
