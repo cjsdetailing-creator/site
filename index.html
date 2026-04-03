@@ -216,6 +216,28 @@ footer{
   padding:20px;
   color:#777;
 }
+
+  .about-container{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:30px;
+  justify-content:center;
+}
+
+.about-img{
+  width:280px;
+  border-radius:16px;
+  object-fit:cover;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.about-text{
+  max-width:500px;
+  color:#ccc;
+  line-height:1.6;
+  font-size:15px;
+}
 </style>
 </head>
 
@@ -341,7 +363,19 @@ footer{
 
 </div>
 </section>
+<section class="section about">
+  <h3 style="text-align:center;margin-bottom:30px;">About Me</h3>
 
+  <div class="about-container">
+    
+    <img src="IMG_8741.jpeg" alt="CJ Detailing" class="about-img">
+
+    <p class="about-text">
+      Hey, I’m CJ — the owner of CJ’s Detailing Shop. I take pride in delivering high-quality results and making every vehicle look its best. Whether it’s a quick clean or a full detail, I treat every car like it’s my own. My goal is simple: consistent quality, honest service, and satisfied customers every time.
+    </p>
+
+  </div>
+</section>
 <footer>
 <p>© 2026 CJ's Auto Detailing</p>
 </footer>
