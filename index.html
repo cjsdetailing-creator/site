@@ -188,6 +188,18 @@ footer{
 .map iframe{
   border-radius:12px;
 }
+.luxury-headline {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.luxury-sub {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  color: #fafafa;
+}
 
 </style>
 
@@ -200,14 +212,12 @@ footer{
 </header>
 
 <section class="hero">
-<h2 class="gradient-text glow-pulse">
-  <span id="headline"></span>
-</h2>
+  <h2 class="luxury-headline">Premium Auto Detailing</h2>
+  <p class="luxury-sub">Turlock, CA • Drop-Off Only</p>
 
-<p class="hero-subtitle">Turlock, CA • Drop-Off Only</p>
-<button class="btn hero-btn" onclick="scrollToBooking()">Get Quote</button>
+  <p class="luxury-sub">(209) 767 1933</p>
+  <button class="btn hero-btn" onclick="scrollToBooking()">Get Quote</button>
 </section>
-
 <section class="section">
 <h3 style="text-align:center;margin-bottom:30px;">Our Services</h3>
 
@@ -363,74 +373,20 @@ I’m based in Turlock, and I’m committed to providing reliable, professional-
   </div>
 </section>
 <footer>
-<p>© 2026 CJ's Auto Detailing</p>
+<p>© 2026 CJ's Detailing Shop</p>
 </footer>
 
 <script>
 const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyhkLtBRhPG-jGrpLoDfRgZkTLJI0vKTP0W-uDX4YVRjijv2fNc3X8vQdUXNA1KWPnu/exec";
 
 /* ===== HEADLINE ROTATION (NO ICONS, NO BLUR) ===== */
-const phrases = [
-  "Premium Auto Detailing",
-  "Interior Detailing",
-  "Exterior Detailing",
-  "Paint Correction"
-];
-
 const headlineEl = document.getElementById("headline");
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
 window.addEventListener("load", () => {
-  rotateLoop();
-});
-
-function rotateLoop(){
-  const current = phrases[phraseIndex];
-
-  if(!isDeleting){
-    headlineEl.textContent = current.substring(0, charIndex + 1);
-    charIndex++;
-
-    if(charIndex === current.length){
-      isDeleting = true;
-
-      setTimeout(()=>{
-        headlineEl.classList.add("fade-out");
-
-        setTimeout(()=>{
-          rotateLoop();
-        },400);
-
-      },1200);
-
-      return;
-    }
-
-  } else {
-    headlineEl.textContent = current.substring(0, charIndex - 1);
-    charIndex--;
-
-    if(charIndex === 0){
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-
-      headlineEl.classList.remove("fade-out");
-      headlineEl.classList.add("fade-in");
-
-      setTimeout(()=>{
-        headlineEl.classList.remove("fade-in");
-        rotateLoop();
-      },300);
-
-      return;
-    }
+  if(headlineEl){
+    headlineEl.textContent = "Premium Auto Detailing";
   }
-
-  setTimeout(rotateLoop, isDeleting ? 40 : 70);
-}
+});
 
 /* ===== SCROLL ANIMATION ===== */
 const cards = document.querySelectorAll('.service-card');
